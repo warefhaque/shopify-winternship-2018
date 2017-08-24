@@ -20,6 +20,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetModule {
 
+  String mBaseUrl = "https://shopicruit.myshopify.com/admin/";
+
   @Provides
   @Singleton
   Gson providesGson() {
@@ -40,6 +42,7 @@ public class NetModule {
     return new Retrofit.Builder()
         .addConverterFactory(GsonConverterFactory.create(gson))
         .addCallAdapterFactory(RxJavaCallAdapterFactory.create())
+        .baseUrl(mBaseUrl)
         .client(okHttpClient)
         .build();
   }

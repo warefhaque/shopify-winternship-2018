@@ -11,5 +11,6 @@ public interface MainContract {
 
   interface Presenter {
     void fetchOrders();
+    void unsubscribe();
   }
 }

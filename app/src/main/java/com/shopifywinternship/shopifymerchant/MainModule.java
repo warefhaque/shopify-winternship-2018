@@ -1,5 +1,6 @@
 package com.shopifywinternship.shopifymerchant;
 
+import com.shopifywinternship.shopifymerchant.api.OrderService;
 import com.shopifywinternship.shopifymerchant.dagger.CustomScope;
 
 import dagger.Module;

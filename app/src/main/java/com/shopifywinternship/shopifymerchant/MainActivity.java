@@ -3,14 +3,16 @@ package com.shopifywinternship.shopifymerchant;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
-import android.test.mock.MockApplication;
-import android.view.View;
+
+import javax.inject.Inject;
 
 /**
  * Created by warefhaque on 8/23/17.
  */
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{
+
+  @Inject MainContract.Presenter mMainPresenter;
 
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -25,6 +27,18 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         .mainModule(new MainModule(this))
         .build()
         .inject(this);
+  }
+
+  @Override
+  protected void onResume() {
+    super.onResume();
+    mMainPresenter.fetchOrders();
+  }
+
+  @Override
+  protected void onPause() {
+    super.onPause();
+    mMainPresenter.unsubscribe();
   }
 
   @Override
