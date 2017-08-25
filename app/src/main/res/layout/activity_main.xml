@@ -29,8 +29,8 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
         android:layout_centerInParent="true"
+        android:gravity="center"
 
         >
 
@@ -54,8 +54,8 @@
             android:layout_alignLeft="@+id/text_view_total_sale_fav_customer"
             android:layout_alignRight="@+id/text_view_total_sale_fav_customer"
             android:layout_below="@+id/text_view_total_sale_fav_customer"
-            android:gravity="center"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="Total sales of Napoleon Batz (CAD)"
             android:textColor="#757575"/>
 
@@ -80,8 +80,8 @@
             android:layout_alignLeft="@+id/text_view_total_bronze_bags"
             android:layout_alignRight="@+id/text_view_total_bronze_bags"
             android:layout_below="@+id/text_view_total_bronze_bags"
-            android:gravity="center"
             android:layout_marginTop="10dp"
+            android:gravity="center"
             android:text="Total Awesome Bronze Bags sold"
             android:textColor="#757575"/>
     </RelativeLayout>
