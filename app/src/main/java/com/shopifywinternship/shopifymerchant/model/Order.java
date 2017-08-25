@@ -4,6 +4,12 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Model class for the each individual Order returned by the API.
+ * Links to other models:
+ * 1. List of LineItems
+ * 2. A Customer object
+ */
 public class Order {
 
   @SerializedName("id")

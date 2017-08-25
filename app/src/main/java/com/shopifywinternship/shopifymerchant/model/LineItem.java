@@ -5,6 +5,9 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Model class for each individual item in each Order returned by the API
+ */
 public class LineItem {
 
   @SerializedName("id")

@@ -6,7 +6,8 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 /**
- * Created by warefhaque on 8/24/17.
+ * Model class for the main object returned by the API.
+ * Contains the list of all the orders.
  */
 
 public class AllOrders {

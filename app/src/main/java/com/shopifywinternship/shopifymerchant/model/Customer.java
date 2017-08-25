@@ -4,6 +4,9 @@ package com.shopifywinternship.shopifymerchant.model;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
+/**
+ * Model class for the Customer object inside each individual Order object returned by the API.
+ */
 public class Customer {
 
   @SerializedName("id")
