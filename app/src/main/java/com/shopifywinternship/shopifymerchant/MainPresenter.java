@@ -44,26 +44,6 @@ public class MainPresenter implements MainContract.Presenter {
       }
     });
 
-//    subscription = getTotalSalesForFavouriteCustomer(listOrderObservable)
-//        .subscribeOn(Schedulers.io())
-//        .observeOn(AndroidSchedulers.mainThread())
-//        .subscribe(new Subscriber<Double>() {
-//          @Override
-//          public void onCompleted() {
-//
-//          }
-//
-//          @Override
-//          public void onError(Throwable e) {
-//
-//          }
-//
-//          @Override
-//          public void onNext(Double aDouble) {
-//            Log.d(TAG, String.valueOf(aDouble));
-//          }
-//        });
-
     subscription = Observable.zip(
         getTotalSalesForFavouriteCustomer(listOrderObservable),
         getTotalBronzeBags(listOrderObservable),
@@ -79,20 +59,16 @@ public class MainPresenter implements MainContract.Presenter {
     .observeOn(AndroidSchedulers.mainThread())
     .subscribe(new Subscriber<CombinedResults>() {
       @Override
-      public void onCompleted() {
-
-      }
+      public void onCompleted() {}
 
       @Override
       public void onError(Throwable e) {
-        Log.e(TAG, e.getLocalizedMessage());
+        view.showErrors(e.getMessage());
       }
 
       @Override
       public void onNext(CombinedResults combinedResults) {
-        Log.d(TAG,
-            "NAPOLEON " + combinedResults.totalSalesFromFavouriteCustomer +
-            "BRONZE: " + combinedResults.totalBronzeBags);
+       view.showTotals(combinedResults);
       }
     });
 
@@ -174,7 +150,7 @@ public class MainPresenter implements MainContract.Presenter {
     subscription.unsubscribe();
   }
 
-  class CombinedResults {
+  public class CombinedResults {
     public double totalSalesFromFavouriteCustomer;
     public int totalBronzeBags;
 

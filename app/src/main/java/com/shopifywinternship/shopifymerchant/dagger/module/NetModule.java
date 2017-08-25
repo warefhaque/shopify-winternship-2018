@@ -6,6 +6,8 @@ import com.google.gson.GsonBuilder;
 
 import javax.inject.Singleton;
 
+import agency.tango.android.avatarview.IImageLoader;
+import agency.tango.android.avatarview.loader.PicassoLoader;
 import dagger.Module;
 import dagger.Provides;
 import okhttp3.OkHttpClient;
@@ -45,5 +47,11 @@ public class NetModule {
         .baseUrl(mBaseUrl)
         .client(okHttpClient)
         .build();
+  }
+
+  @Provides
+  @Singleton
+  IImageLoader providesPicassoLoader() {
+    return new PicassoLoader();
   }
 }

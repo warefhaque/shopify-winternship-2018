@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:app="http://schemas.android.com/apk/res-auto"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+    <agency.tango.android.avatarview.views.AvatarView
+        android:id="@+id/image_merchant_logo"
+        app:av_text_size_percentage="35"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_centerHorizontal="true"/>
+
+
+    <TextView
+        android:id="@+id/text_view_merchant_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_merchant_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="10dp"
+        android:text="Gloria Jeans Coffees"
+        android:textColor="#757575"
+        android:textSize="16sp"
+        />
+
+    <TextView
+        android:id="@+id/text_view_total_sale_fav_customer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/image_merchant_logo"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="$1400"
+        android:textColor="@color/colorAccent"
+        android:textSize="60sp"
+        android:visibility="visible"
+        />
+
+    <TextView
+        android:id="@+id/text_view_total_bronze_bags"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/text_view_total_sale_fav_customer"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="50dp"
+        android:text="$1400"
+        android:textColor="@color/colorAccent"
+        android:textSize="60sp"
+        android:visibility="visible"
+        />
+</RelativeLayout>

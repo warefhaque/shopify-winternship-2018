@@ -6,7 +6,8 @@ package com.shopifywinternship.shopifymerchant;
 
 public interface MainContract {
   interface View {
-    void showTotals();
+    void showTotals(MainPresenter.CombinedResults combinedResults);
+    void showErrors(String error);
   }
 
   interface Presenter {

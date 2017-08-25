@@ -4,6 +4,9 @@ import com.google.gson.Gson;
 import com.shopifywinternship.shopifymerchant.dagger.module.AppModule;
 import com.shopifywinternship.shopifymerchant.dagger.module.NetModule;
 import javax.inject.Singleton;
+
+import agency.tango.android.avatarview.IImageLoader;
+import agency.tango.android.avatarview.loader.PicassoLoader;
 import dagger.Component;
 import retrofit2.Retrofit;
 
@@ -16,4 +19,5 @@ import retrofit2.Retrofit;
 public interface NetComponent {
   Retrofit retrofit();
   Gson gson();
+  IImageLoader picassoLoader();
 }
