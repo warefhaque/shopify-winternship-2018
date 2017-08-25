@@ -106,8 +106,8 @@ public class LineItem {
     this.quantity = quantity;
   }
 
-  public String getPrice() {
-    return price;
+  public Double getPrice() {
+    return Double.valueOf(price);
   }
 
   public void setPrice(String price) {

@@ -357,8 +357,8 @@ public class Order {
     this.totalDiscounts = totalDiscounts;
   }
 
-  public String getTotalLineItemsPrice() {
-    return totalLineItemsPrice;
+  public Double getTotalLineItemsPrice() {
+    return Double.valueOf(totalLineItemsPrice);
   }
 
   public void setTotalLineItemsPrice(String totalLineItemsPrice) {
