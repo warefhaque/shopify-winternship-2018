@@ -1,5 +1,6 @@
 package com.shopifywinternship.shopifymerchant;
 
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.shopifywinternship.shopifymerchant.api.OrderService;
@@ -35,25 +36,15 @@ public class MainPresenter implements MainContract.Presenter {
 
   @Override
   public void fetchOrders() {
-    Observable<AllOrders> allOrdersObservable = orderService.getAllOrders();
-    Observable<List<Order>> listOrderObservable = allOrdersObservable
-        .map(new Func1<AllOrders, List<Order>>() {
-      @Override
-      public List<Order> call(AllOrders allOrders) {
-        return allOrders.getOrders();
-      }
-    });
-
     subscription = Observable.zip(
-        getTotalSalesForFavouriteCustomer(listOrderObservable),
-        getTotalBronzeBags(listOrderObservable),
+        getTotalSalesForFavouriteCustomer(getListObservable()),
+        getTotalBronzeBags(getListObservable()),
         new Func2<Double, Integer, CombinedResults>() {
           @Override
           public CombinedResults call(Double aDouble, Integer aDouble2) {
             return new CombinedResults(aDouble, aDouble2);
           }
         }
-
     )
     .subscribeOn(Schedulers.io())
     .observeOn(AndroidSchedulers.mainThread())
@@ -72,6 +63,18 @@ public class MainPresenter implements MainContract.Presenter {
       }
     });
 
+  }
+
+  @NonNull
+  private Observable<List<Order>> getListObservable() {
+    Observable<AllOrders> allOrdersObservable = orderService.getAllOrders();
+    return allOrdersObservable
+        .map(new Func1<AllOrders, List<Order>>() {
+      @Override
+      public List<Order> call(AllOrders allOrders) {
+        return allOrders.getOrders();
+      }
+    });
   }
 
   private Observable<Double> getTotalSalesForFavouriteCustomer(Observable<List<Order>> orders) {
