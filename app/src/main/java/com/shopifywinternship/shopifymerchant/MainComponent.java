@@ -6,10 +6,11 @@ import com.shopifywinternship.shopifymerchant.dagger.component.NetComponent;
 import dagger.Component;
 
 /**
- * This class is used to define Injection targets.In MainActivity for example, we can use @Inject
- * annotation to obtain references to Objects we have defined in the NetModule and MainModule.
- * Activities declared within the inject() methods are the only ones allowed to access these
- * Objects/Dependencies provided by the Main and Net Modules.
+ * This class is used to define Injection targets. It assigns references in our activities,
+ * services, or fragments to have access to objects we defined in Net and Main Modules.
+ * In MainActivity for example, we can use @Inject annotation to obtain references to Objects
+ * we have defined in the NetModule and MainModule. Activities declared within the inject()
+ * methods are the only ones allowed to access these Objects/Dependencies provided by the Main and Net Modules.
  */
 
 @CustomScope

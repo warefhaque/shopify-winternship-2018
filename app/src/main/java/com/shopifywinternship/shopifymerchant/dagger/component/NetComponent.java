@@ -11,7 +11,8 @@ import dagger.Component;
 import retrofit2.Retrofit;
 
 /**
- * Created by warefhaque on 8/23/17.
+ * This Component class is a parent Component to the MainComponent class and
+ * exposes the dependencies which the MainComponent and MainModule can use.
  */
 
 @Singleton
