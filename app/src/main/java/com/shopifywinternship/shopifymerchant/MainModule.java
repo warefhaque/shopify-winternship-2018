@@ -8,7 +8,9 @@ import dagger.Provides;
 import retrofit2.Retrofit;
 
 /**
- * Created by warefhaque on 8/23/17.
+ * This is a Module class that provides Objects to be injected into other classes.
+ * Each method annotated with @Provides provides objects to any other class that uses this Module.
+ * In our case it is the MainActivity that uses this Module.
  */
 
 @Module

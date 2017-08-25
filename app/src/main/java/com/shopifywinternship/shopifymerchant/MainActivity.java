@@ -19,14 +19,23 @@ import butterknife.ButterKnife;
 import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 /**
- * Created by warefhaque on 8/23/17.
+ * Principle and only activity. Connects to the MainPresenter to process the data from the API
+ * endpoint and display the total sales  to Napoleon and the total number of Bronze bags sold.
  */
 
 public class MainActivity extends AppCompatActivity implements MainContract.View{
 
+  /**
+   * Each @Inject calls the inject() method. This causes Dagger to locate the singletons in the
+   * dependency graph to try to find a matching return type. If it finds one, it assigns the
+   * references to the respective fields.
+   */
   @Inject MainContract.Presenter mMainPresenter;
   @Inject IImageLoader mImageLoader;
 
+  /**
+   * Butterknife syntax for getting reference to views in main layout.
+   */
   @BindView(R.id.image_merchant_logo) AvatarView imaageViewMerchantLogo;
   @BindView(R.id.text_view_merchant_name) TextView textViewMerchantName;
   @BindView(R.id.text_view_total_sale_fav_customer) TextView textViewTotalSaleFavCustomer;
@@ -49,6 +58,12 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     textViewMerchantName.setText(getString(R.string.merchant_name));
   }
 
+  /**
+   * 1. Tells the MainComponent class about the NetModule and MainModule. This ensures that
+   * annotating with @Inject will cause Dagger to search for matching dependencies in these classes
+   * 2. Tells MainComponent to allow this activity to request dependencies from Net and Main Modules
+   * by calling inject(this).
+   */
   private void setUpDagger() {
     DaggerMainComponent.builder().netComponent(
         ((ShopifyMerchantApplication) getApplication())
@@ -58,23 +73,37 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
         .inject(this);
   }
 
+  /**
+   * Required by Calligraphy for the custom fonts used
+   * @param newBase
+   */
   @Override
   protected void attachBaseContext(Context newBase) {
     super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
   }
 
+  /**
+   * fetches the data from the API endpoint and processes it to compute
+   * total sales and total bronze bags
+   */
   @Override
   protected void onResume() {
     super.onResume();
     mMainPresenter.fetchOrders();
   }
 
+  /**
+   * Unsubscribes the subscriber int the Presenter to avoid memory leaks
+   */
   @Override
   protected void onPause() {
     super.onPause();
     mMainPresenter.unsubscribe();
   }
 
+  /**
+   * @param combinedResults - contains the total sales by Napoleon && total number of Awesome
+   */
   @Override
   public void showTotals(MainPresenter.CombinedResults combinedResults) {
     textViewTotalSaleFavCustomer.setText(
@@ -82,6 +111,9 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
     textViewTotalBronzeBags.setText(Integer.toString(combinedResults.totalBronzeBags));
   }
 
+  /**
+   * @param error - error when processing data or Fetching data from API enpoint
+   */
   @Override
   public void showErrors(String error) {
     Toast.makeText(this, error, Toast.LENGTH_SHORT).show();

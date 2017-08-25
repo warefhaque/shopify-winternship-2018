@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 @Module
 public class NetModule {
 
-  String mBaseUrl = "https://shopicruit.myshopify.com/admin/";
+  private String mBaseUrl = "https://shopicruit.myshopify.com/admin/";
 
   @Provides
   @Singleton
