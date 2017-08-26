@@ -70,4 +70,12 @@ dependencies {
     //if you want to use Picasso for loading images
     compile 'agency.tango.android:avatar-view-picasso:0.0.2'
 
+    //Logging
+    compile 'com.jakewharton.timber:timber:4.5.1'
+
+    //Annimon Stream API
+    compile 'com.annimon:stream:1.1.8'
+
+
+
 }

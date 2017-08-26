@@ -2,6 +2,8 @@ package com.shopifywinternship.shopifymerchant;
 
 import android.content.Context;
 import android.os.Bundle;
+import android.renderscript.Double2;
+import android.support.annotation.IntegerRes;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
@@ -102,13 +104,19 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
   }
 
   /**
-   * @param combinedResults - contains the total sales by Napoleon && total number of Awesome
+   * @param itemQuantity total number of required items in list of orders
    */
   @Override
-  public void showTotals(MainPresenter.CombinedResults combinedResults) {
-    textViewTotalSaleFavCustomer.setText(
-        Double.toString(combinedResults.totalSalesFromFavouriteCustomer));
-    textViewTotalBronzeBags.setText(Integer.toString(combinedResults.totalBronzeBags));
+  public void showTotalQuantityForItem(int itemQuantity) {
+    textViewTotalBronzeBags.setText(Integer.toString(itemQuantity));
+  }
+
+  /**
+   * @param saleForCustomer total sales of required customer
+   */
+  @Override
+  public void showTotalSalesForCustomer(double saleForCustomer) {
+    textViewTotalSaleFavCustomer.setText(Double.toString(saleForCustomer));
   }
 
   /**

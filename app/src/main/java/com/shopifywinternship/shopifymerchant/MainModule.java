@@ -23,13 +23,13 @@ public class MainModule {
 
   @Provides
   @CustomScope
-  OrderService providesPaymentService(Retrofit retrofit) {
+  OrderService providesOrderService(Retrofit retrofit) {
     return retrofit.create(OrderService.class);
   }
 
   @Provides
   @CustomScope
-  MainContract.View providesMainPaymentView() {
+  MainContract.View providesMainView() {
     return view;
   }
 

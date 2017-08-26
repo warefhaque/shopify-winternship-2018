@@ -6,12 +6,17 @@ package com.shopifywinternship.shopifymerchant;
 
 public interface MainContract {
   interface View {
-    /**
-     * @param combinedResults - contains the total sales by Napoleon && total number of Awesome
-     *                        Bronze Bags sold
-     */
-    void showTotals(MainPresenter.CombinedResults combinedResults);
 
+    /**
+     * @param itemQuantity total number of required items in list of orders
+     */
+    void showTotalQuantityForItem(int itemQuantity);
+
+    /**
+     * @param saleForCustomer total sales of required customer
+     */
+
+    void showTotalSalesForCustomer(double saleForCustomer);
     /**
      * @param error - error when processing data or Fetching data from API enpoint
      */
