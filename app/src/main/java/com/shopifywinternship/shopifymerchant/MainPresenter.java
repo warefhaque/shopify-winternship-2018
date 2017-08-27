@@ -30,6 +30,8 @@ public class MainPresenter implements MainContract.Presenter {
   private static final String FIRST_NAME = "Napoleon";
   private static final String LAST_NAME = "Batz";
   private static final String AWESOME_BRONZE_BAGS = "Awesome Bronze Bag";
+  private static final int PAGE_NUMBER = 1;
+  private static final String ACCESS_TOKEN = "c32313df0d0ef512ca64d5b336a0d7c6";
   private CompositeSubscription compositeSubscription = new CompositeSubscription();;
 
   public MainPresenter(MainContract.View view, OrderService orderService) {
@@ -39,25 +41,25 @@ public class MainPresenter implements MainContract.Presenter {
 
   /**
    * Called by a view implementing the MainContract.View interface.
-   * Share - Allows more than one subscriber to subscribe to the Observable containing the list of
-   * orders from the API.
+   * Share - Allows more than one subscriber to subscribe to the Observable WITHOUT making two
+   * separate network requests
    */
   @Override
   public void fetchOrders() {
 
-    Observable<List<Order>> orderObservable = orderService.getAllOrders()
+    Observable<List<Order>> orderObservable = orderService.getAllOrders(PAGE_NUMBER, ACCESS_TOKEN)
         .subscribeOn(Schedulers.io())
         .observeOn(AndroidSchedulers.mainThread())
         .map(AllOrders::getOrders)
         .share();
 
-    Subscription totalSaleSubscription = orderObservable.subscribe(orders -> view.showTotalSalesForCustomer(
-        getTotalSalesForCustomer(orders, FIRST_NAME, LAST_NAME)),
+    Subscription totalSaleSubscription = orderObservable.subscribe(
+        orders -> view.showTotalSalesForCustomer(getTotalSalesForCustomer(orders, FIRST_NAME, LAST_NAME)),
         throwable -> view.showErrors(throwable.getMessage()));
     compositeSubscription.add(totalSaleSubscription);
 
-    Subscription totalQtySubscription = orderObservable.subscribe(orders -> view.showTotalQuantityForItem(
-        getTotalBronzeBags(orders,AWESOME_BRONZE_BAGS)),
+    Subscription totalQtySubscription = orderObservable.subscribe(
+        orders -> view.showTotalQuantityForItem(getTotalBronzeBags(orders,AWESOME_BRONZE_BAGS)),
         throwable -> view.showErrors(throwable.getMessage()));
     compositeSubscription.add(totalQtySubscription);
   }

@@ -6,6 +6,7 @@ import com.shopifywinternship.shopifymerchant.model.Order;
 import java.util.List;
 
 import retrofit2.http.GET;
+import retrofit2.http.Query;
 import rx.Observable;
 
 public interface OrderService {
@@ -16,6 +17,7 @@ public interface OrderService {
    * https://shopicruit.myshopify.com/admin/orders.json?page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6
    * @return - Observable of AllOrders. AllOrders only contains a List of Orders.
    */
-  @GET ("orders.json?page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6")
-  Observable<AllOrders> getAllOrders();
+  @GET ("orders.json/")
+  Observable<AllOrders> getAllOrders(@Query("page") int pageNumber,
+                                     @Query("access_token") String accessToken);
 }

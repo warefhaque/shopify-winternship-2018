@@ -1,4 +1,5 @@
 # Shopify Merchant App
+---
 
 An Android application for Shopify merchants that allows you to view:
  - Total sales of your favourite customer
@@ -12,7 +13,7 @@ An Android application for Shopify merchants that allows you to view:
   - **Testing** : Because the presenter, view, and model are independent and interact via interfaces they can be tested independently by examining the data that is passed between the interfaces.
 
 
-#### Key Components:
+###### Key Components:
 
   - **Models** :
     * AllOrders
@@ -31,22 +32,22 @@ This app maps JSON objects returned by the API to POJOs. Some advantages include
 -  Typesafety 
 -  Compile time checking
 
-However, POJOs cannot be passed directly to another server or process not implemented in Java, they have to be **serialized** and **deserialized**. If in the future we are required to communicate back and forth with a server a better alternative would be to implement our DTOs (Data Transfer Object) using something like [Protocol Buffers](https://github.com/google/protobuf) and leverage the convenience of platform independence among advantages
-### Dagger 
+However, POJOs cannot be passed directly to another server or process not implemented in Java, they have to be [serialized](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html) and [deserialized](https://docs.oracle.com/javase/tutorial/jndi/objects/serial.html). If in the future we are required to communicate back and forth with a server a better alternative would be to implement our DTOs (Data Transfer Object) using something like [Protocol Buffers](https://github.com/google/protobuf) and leverage the convenience of platform independence among advantages
+### [Dagger](https://github.com/google/dagger)
 
 Dagger is used for dependency injection. Some advantages include: 
  -  Allows us to avoid inversion-of-control
  -  Allows us to swap out dependencies easily for testing 
  -  Allows us to control the scope and lifetime of these dependencies
 
-### Retrofit
+### [Retrofit](https://github.com/square/retrofit)
 
 Retrofit is the http client client used in this application. Some advantages include :
  - Allows seperation of concerns as the implementation is based on designing interfaces.
  - Allows us to produce fake implementations of the interface when testing and make the tests independent of network requests. 
  - Supports RxJava very well as the interface methods are allowed to return Observables.
 
-### RxJava
+### [RxJava](https://github.com/ReactiveX/RxJava)
 
 Rx Java is the framework used to simplify asynchronous programming. Based on the nature of this app which requires us to fetch a list of objects and perform filter-map-reduce operations RxJava and a functional approach seemed appropriate. Some advantages include:
 
