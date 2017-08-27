@@ -13,7 +13,7 @@ An Android application for Shopify merchants that allows you to view:
   - **Testing** : Because the presenter, view, and model are independent and interact via interfaces they can be tested independently by examining the data that is passed between the interfaces.
 
 
-###### Key Components:
+#### Key Components:
 
   - **Models** :
     * AllOrders
