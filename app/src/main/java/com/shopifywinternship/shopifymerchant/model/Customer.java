@@ -67,6 +67,11 @@ public class Customer {
   @Expose
   private Object defaultAddress;
 
+  public Customer(String firstName, String lastName) {
+    this.firstName = firstName;
+    this.lastName = lastName;
+  }
+
   public Long getId() {
     return id;
   }

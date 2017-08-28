@@ -364,7 +364,7 @@ public class Order {
   }
 
   public Double getTotalLineItemsPrice() {
-    return Double.valueOf(totalLineItemsPrice);
+    return (totalLineItemsPrice.isEmpty()) ? 0 : Double.valueOf(totalLineItemsPrice);
   }
 
   public void setTotalLineItemsPrice(String totalLineItemsPrice) {

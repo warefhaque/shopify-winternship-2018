@@ -77,6 +77,11 @@ public class LineItem {
   @Expose
   private List<Object> taxLines = null;
 
+  public LineItem(String title, Integer quantity) {
+    this.title = title;
+    this.quantity = quantity;
+  }
+
   public Long getId() {
     return id;
   }

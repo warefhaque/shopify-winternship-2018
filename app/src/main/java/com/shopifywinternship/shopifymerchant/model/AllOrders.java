@@ -19,8 +19,8 @@ public class AllOrders {
     return orders;
   }
 
-  public AllOrders setOrders(List<Order> orders) {
+  public AllOrders(List<Order> orders) {
     this.orders = orders;
-    return this;
   }
+
 }
