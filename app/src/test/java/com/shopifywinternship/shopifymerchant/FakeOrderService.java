@@ -2,12 +2,6 @@ package com.shopifywinternship.shopifymerchant;
 
 import com.shopifywinternship.shopifymerchant.api.OrderService;
 import com.shopifywinternship.shopifymerchant.model.AllOrders;
-import com.shopifywinternship.shopifymerchant.model.LineItem;
-
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 import retrofit2.http.Query;
 import rx.Observable;
@@ -29,6 +23,6 @@ public class FakeOrderService implements OrderService {
                                             @Query("access_token") String accessToken) {
 
 
-    return Observable.just(new AllOrders(orderGenerator.generateOrder()));
+    return Observable.just(new AllOrders(orderGenerator.generateOrders()));
   }
 }

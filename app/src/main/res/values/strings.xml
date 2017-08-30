@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">shopifymerchant</string>
     <string name="merchant_name">Shireen\'s Flowers</string>
+    <string name="total_sales_of_napoleon_batz_cad">Total sales of Napoleon Batz (CAD)</string>
+    <string name="total_awesome_bronze_bags_sold">Total Awesome Bronze Bags sold</string>
+    <string name="gloria_jeans_coffees">Gloria Jeans Coffees</string>
+    <string name="_1400">$1400</string>
 </resources>

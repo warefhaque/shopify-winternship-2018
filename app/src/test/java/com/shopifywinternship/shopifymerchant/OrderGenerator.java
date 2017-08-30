@@ -28,22 +28,28 @@ public class OrderGenerator {
     return new Customer(firstName,lastName);
   }
 
-  public List<Order> generateOrder () {
+  public List<Order> generateOrders() {
 
     List<Order> result = new ArrayList<>();
 
-    Order order = new Order();
-    order.setLineItems(generateLineItems());
-    order.setCustomer(generateCustomer("Napoleon","Batz"));
-    order.setTotalLineItemsPrice("500");
+    Order order = new Order()
+        .setLineItems(generateLineItems())
+        .setCustomer(generateCustomer("Napoleon","Batz"))
+        .setTotalLineItemsPrice("500");
 
-    Order order1 = new Order();
-    order1.setLineItems(generateLineItems());
-    order1.setCustomer(generateCustomer("Napoleon","Batz"));
-    order1.setTotalLineItemsPrice("");
+    Order order1 = new Order()
+        .setLineItems(generateLineItems())
+        .setCustomer(generateCustomer("Napoleon","Batz"))
+        .setTotalLineItemsPrice("700");
+
+    Order order2 = new Order()
+        .setLineItems(generateLineItems())
+        .setCustomer(generateCustomer("Waref","Haque"))
+        .setTotalLineItemsPrice("700");
 
     result.add(order);
     result.add(order1);
+    result.add(order2);
 
     return result;
   }

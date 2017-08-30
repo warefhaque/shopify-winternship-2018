@@ -27,8 +27,6 @@ public class MainTest {
 
   @Inject MainContract.Presenter mPresenter;
   @Inject MainContract.View mView;
-  @Captor ArgumentCaptor<Double> salesAmountCaptor;
-  @Captor ArgumentCaptor<Integer> quantityCaptor;
 
   @Rule
   public RxSchedulersOverrideRule rxSchedulersOverrideRule = new RxSchedulersOverrideRule();
@@ -45,7 +43,7 @@ public class MainTest {
   @Test
   public void MainTest() {
     mPresenter.fetchOrders();
-    verify(mView).showTotalSalesForCustomer(500);
-    verify(mView).showTotalQuantityForItem(4);
+    verify(mView).showTotalSalesForCustomer(1200);
+    verify(mView).showTotalQuantityForItem(6);
   }
 }

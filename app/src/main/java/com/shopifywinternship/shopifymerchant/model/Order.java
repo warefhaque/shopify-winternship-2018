@@ -367,8 +367,9 @@ public class Order {
     return (totalLineItemsPrice.isEmpty()) ? 0 : Double.valueOf(totalLineItemsPrice);
   }
 
-  public void setTotalLineItemsPrice(String totalLineItemsPrice) {
+  public Order setTotalLineItemsPrice(String totalLineItemsPrice) {
     this.totalLineItemsPrice = totalLineItemsPrice;
+    return this;
   }
 
   public Object getCartToken() {
