@@ -64,6 +64,7 @@ public class MainPresenter implements MainContract.Presenter {
   }
 
   /**
+   * Calculates total amount inclusive of taxes spent by favorite customer
    * Called by fetchOrders
    * 1. Stream - conveys elements in the list of orders through a pipeline of operations
    * 2. Filter - filters the Order objects conveyed by the stream to find the ones by the required customer
@@ -78,7 +79,7 @@ public class MainPresenter implements MainContract.Presenter {
         .filter(order -> order.getCustomer() != null
             && order.getCustomer().getFirstName().equals(firstName)
             && order.getCustomer().getLastName().equals(lastName))
-        .mapToDouble(Order::getTotalLineItemsPrice)
+        .mapToDouble(Order::getTotalPrice)
         .sum();
   }
 

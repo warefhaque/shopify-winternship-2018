@@ -291,12 +291,13 @@ public class Order {
     this.test = test;
   }
 
-  public String getTotalPrice() {
-    return totalPrice;
+  public Double getTotalPrice() {
+    return (totalPrice.isEmpty()) ? 0 : Double.valueOf(totalPrice);
   }
 
-  public void setTotalPrice(String totalPrice) {
+  public Order setTotalPrice(String totalPrice) {
     this.totalPrice = totalPrice;
+    return this;
   }
 
   public String getSubtotalPrice() {

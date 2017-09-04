@@ -38,17 +38,18 @@ public class OrderGenerator {
     Order order = new Order()
         .setLineItems(generateLineItems())
         .setCustomer(generateCustomer("Napoleon","Batz"))
-        .setTotalLineItemsPrice("500");
+        .setTotalPrice("500");
+
 
     Order order1 = new Order()
         .setLineItems(generateLineItems())
         .setCustomer(generateCustomer("Napoleon","Batz"))
-        .setTotalLineItemsPrice("700");
+        .setTotalPrice("700");
 
     Order order2 = new Order()
         .setLineItems(generateLineItems())
         .setCustomer(generateCustomer("Waref","Haque"))
-        .setTotalLineItemsPrice("700");
+        .setTotalPrice("700");
 
     result.add(order);
     result.add(order1);
