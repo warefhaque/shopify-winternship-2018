@@ -64,13 +64,14 @@ public class MainPresenter implements MainContract.Presenter {
   }
 
   /**
-   * Calculates total amount inclusive of taxes spent by favorite customer
    * Called by fetchOrders
    * 1. Stream - conveys elements in the list of orders through a pipeline of operations
    * 2. Filter - filters the Order objects conveyed by the stream to find the ones by the required customer
    * 3. MapToDouble & Sum- converts/maps filtered Order objects to just their total cost and adds them
    * @param orders - List of all orders from API
    * @return Total amount in sales by required customer
+   * Note: As the challenge asks to ignore additional pages and all the orders in this page are in CAD
+   * an exchange rate conversion mechanism was not used.
    */
   private Double getTotalSalesForCustomer(@NonNull List<Order> orders,
                                           @NonNull String firstName,
@@ -91,6 +92,9 @@ public class MainPresenter implements MainContract.Presenter {
    * 4. MapToInt & Sum - converts/maps filtered LineItem objects to just their total qty and adds them
    * @param orders - List of all orders from API
    * @return - Total amount of items in all orders
+   * Note: As the definition of Order suggests that it is a customer's completed request to purchase
+   * one or more products from a shop all orders and line items were considered when totalling the
+   * number of Awesome Bronze Bags sold
    */
   private Integer getTotalItems(@NonNull List<Order>orders,
                                 @NonNull String itemTitle) {
