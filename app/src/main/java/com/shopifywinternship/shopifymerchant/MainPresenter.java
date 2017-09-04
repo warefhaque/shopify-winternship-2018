@@ -27,9 +27,6 @@ public class MainPresenter implements MainContract.Presenter {
   private static final String TAG = MainPresenter.class.getSimpleName();
   private MainContract.View view;
   private OrderService orderService;
-  private static final String FIRST_NAME = "Napoleon";
-  private static final String LAST_NAME = "Batz";
-  private static final String AWESOME_BRONZE_BAGS = "Awesome Bronze Bag";
   private static final int PAGE_NUMBER = 1;
   private static final String ACCESS_TOKEN = "c32313df0d0ef512ca64d5b336a0d7c6";
   private CompositeSubscription compositeSubscription = new CompositeSubscription();;
@@ -45,7 +42,9 @@ public class MainPresenter implements MainContract.Presenter {
    * separate network requests
    */
   @Override
-  public void fetchOrders() {
+  public void fetchOrders(@NonNull String firstName,
+                          @NonNull String lastName,
+                          @NonNull String itemName) {
 
     Observable<List<Order>> orderObservable = orderService.getAllOrders(PAGE_NUMBER, ACCESS_TOKEN)
         .subscribeOn(Schedulers.io())
@@ -54,18 +53,18 @@ public class MainPresenter implements MainContract.Presenter {
         .share();
 
     Subscription totalSaleSubscription = orderObservable.subscribe(
-        orders -> view.showTotalSalesForCustomer(getTotalSalesForCustomer(orders, FIRST_NAME, LAST_NAME)),
+        orders -> view.showTotalSalesForCustomer(getTotalSalesForCustomer(orders, firstName, lastName)),
         throwable -> view.showErrors(throwable.getMessage()));
     compositeSubscription.add(totalSaleSubscription);
 
     Subscription totalQtySubscription = orderObservable.subscribe(
-        orders -> view.showTotalQuantityForItem(getTotalBronzeBags(orders,AWESOME_BRONZE_BAGS)),
+        orders -> view.showTotalQuantityForItem(getTotalItems(orders,itemName)),
         throwable -> view.showErrors(throwable.getMessage()));
     compositeSubscription.add(totalQtySubscription);
   }
 
   /**
-   * Called by fetchOrders()
+   * Called by fetchOrders
    * 1. Stream - conveys elements in the list of orders through a pipeline of operations
    * 2. Filter - filters the Order objects conveyed by the stream to find the ones by the required customer
    * 3. MapToDouble & Sum- converts/maps filtered Order objects to just their total cost and adds them
@@ -84,7 +83,7 @@ public class MainPresenter implements MainContract.Presenter {
   }
 
   /**
-   * Called by fetchOrders()
+   * Called by fetchOrders
    * 1. Stream - conveys elements in the list of orders through a pipeline of operations
    * 2. FlatMap - converts the stream of Orders to a stream of LineItems
    * 3. Filter - find the desired line item
@@ -92,8 +91,8 @@ public class MainPresenter implements MainContract.Presenter {
    * @param orders - List of all orders from API
    * @return - Total amount of items in all orders
    */
-  private Integer getTotalBronzeBags(@NonNull List<Order>orders,
-                                     @NonNull String itemTitle) {
+  private Integer getTotalItems(@NonNull List<Order>orders,
+                                @NonNull String itemTitle) {
     return Stream.of(orders)
         .flatMap(order -> Stream.of(order.getLineItems()))
         .filter(lineItem -> lineItem != null && lineItem.getTitle().equals(itemTitle))

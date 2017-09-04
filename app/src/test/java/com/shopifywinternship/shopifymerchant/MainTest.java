@@ -18,9 +18,6 @@ import javax.inject.Inject;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.verify;
 
-/**
- * Created by warefhaque on 8/27/17.
- */
 
 @RunWith(RobolectricTestRunner.class)
 public class MainTest {
@@ -40,9 +37,12 @@ public class MainTest {
     MockitoAnnotations.initMocks(this);
   }
 
+  /**
+   * Tests the interaction between MainPresenter and MainActivity.
+   */
   @Test
   public void MainTest() {
-    mPresenter.fetchOrders();
+    mPresenter.fetchOrders("Napoleon","Batz","Awesome Bronze Bag");
     verify(mView).showTotalSalesForCustomer(1200);
     verify(mView).showTotalQuantityForItem(6);
   }

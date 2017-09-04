@@ -1,5 +1,7 @@
 package com.shopifywinternship.shopifymerchant;
 
+import android.support.annotation.NonNull;
+
 import com.shopifywinternship.shopifymerchant.model.Customer;
 import com.shopifywinternship.shopifymerchant.model.LineItem;
 import com.shopifywinternship.shopifymerchant.model.Order;
@@ -24,7 +26,8 @@ public class OrderGenerator {
     return result;
   }
 
-  public Customer generateCustomer (String firstName, String lastName) {
+  public Customer generateCustomer (@NonNull String firstName,
+                                    @NonNull String lastName) {
     return new Customer(firstName,lastName);
   }
 

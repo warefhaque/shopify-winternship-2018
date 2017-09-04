@@ -43,6 +43,11 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
   @BindView(R.id.text_view_total_sale_fav_customer) TextView textViewTotalSaleFavCustomer;
   @BindView(R.id.text_view_total_bronze_bags) TextView textViewTotalBronzeBags;
 
+
+  private static final String FIRST_NAME = "Napoleon";
+  private static final String LAST_NAME = "Batz";
+  private static final String AWESOME_BRONZE_BAGS = "Awesome Bronze Bag";
+
   @Override
   protected void onCreate(@Nullable Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -91,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements MainContract.View
   @Override
   protected void onResume() {
     super.onResume();
-    mMainPresenter.fetchOrders();
+    mMainPresenter.fetchOrders(FIRST_NAME,LAST_NAME,AWESOME_BRONZE_BAGS);
   }
 
   /**

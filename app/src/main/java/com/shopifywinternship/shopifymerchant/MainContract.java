@@ -1,5 +1,7 @@
 package com.shopifywinternship.shopifymerchant;
 
+import android.support.annotation.NonNull;
+
 /**
  * Contract between MainActivity and MainPresenter
  */
@@ -28,7 +30,9 @@ public interface MainContract {
      * Calls API endpoint and processes data to compute total sales by Naploleon and
      * total Awesome Bronze Bags sold
      */
-    void fetchOrders();
+    void fetchOrders(@NonNull String firstName,
+                     @NonNull String lastName,
+                     @NonNull String itemName);
 
     /**
      * Unsubscribe from all Observables

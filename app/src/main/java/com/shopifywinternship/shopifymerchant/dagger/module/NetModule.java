@@ -16,7 +16,8 @@ import retrofit2.adapter.rxjava.RxJavaCallAdapterFactory;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 /**
- *
+ * This class contains the dependencies that the whole app can use.
+ * Declaring them as singletons ensures you are not recreating large objects repeatedly
  */
 
 @Module

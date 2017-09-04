@@ -13,7 +13,7 @@ public interface OrderService {
   // TODO: 8/24/17 make the page and access token variables
 
   /**
-   * Interface created by the Retrofit class that makes a GET request to the endpoint:
+   * Interface implemented by the Retrofit class that makes a GET request to the endpoint:
    * https://shopicruit.myshopify.com/admin/orders.json?page=1&access_token=c32313df0d0ef512ca64d5b336a0d7c6
    * @return - Observable of AllOrders. AllOrders only contains a List of Orders.
    */
