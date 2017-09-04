@@ -1,5 +1,4 @@
 # Shopify Merchant App
----
 
 An Android application for Shopify merchants that allows you to view:
  - Total sales of your favourite customer
