@@ -4,9 +4,6 @@
 An Android application for Shopify merchants that allows you to view:
  - Total sales of your favourite customer
  - Total quantity of a particular item sold
- 
- 
- ![Alt text](/app/src/main/res/assets/Main Screenshot.png?raw=true)
 
 ### Architecture
 
