@@ -6,7 +6,7 @@ An Android application for Shopify merchants that allows you to view:
  - Total quantity of a particular item sold
  
  
- ![alt text](/app/src/main/res/assets/Main Screenshot.png?raw=true)
+ ![Alt text](/app/src/main/res/assets/Main Screenshot.png?raw=true)
 
 ### Architecture
 
