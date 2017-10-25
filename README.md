@@ -48,7 +48,7 @@ However, POJOs cannot be passed directly to another server or process not implem
 
 ### Asynchronous Framework
 
-[RxJava](https://github.com/ReactiveX/RxJava) is the framework used to simplify asynchronous programming. Based on the nature of this app which requires us to fetch a list of objects and perform filter-map-reduce operations RxJava and a functional approach seemed appropriate. Some advantages:
+[RxJava](https://github.com/ReactiveX/RxJava) is the framework used to simplify asynchronous programming. Some advantages:
 
 - Allows us to simplify the ability to chain async operations and avoid layered callbacks.
 - Allows good error handling as errors from these chained async operations are caught in one place.
